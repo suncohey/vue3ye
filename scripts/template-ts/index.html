@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,mininmum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" charset='UTF-8' />
+    <meta name="author" content="zzvcom-Author" />
+    <meta name="Copyright" content="zzvcom-v.15" />
+    <meta name="Description" content="<%=title%>" />
+    <link rel="icon" href="/favicon.ico" />
+    <title><%=title%></title>
+    <!-- 使用CDN的CSS文件 -->
+    <% for (const i of cdnCss) { %>
+    <link href="<%= i %>" rel="stylesheet" />
+    <% } %>
+    <!-- 使用CDN的JS文件 -->
+    <% for (const i of commonCdn) { %>
+      <script src="<%= i %>" defer></script>
+    <% } %>
+    <% for (const i of cdnJs) { %>
+    <script src="<%= i %>" defer></script>
+    <% } %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="./main.ts"></script>
+    <script src="/static/config.js"></script>
+  </body>
+</html>

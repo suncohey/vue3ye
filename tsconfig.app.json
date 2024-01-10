@@ -1,0 +1,27 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "scripts/*.mjs",
+    "scripts/*.ts",
+    "components.d.ts",
+    ".eslintrc.cjs",
+    "vite.config.ts",
+    "postcss.config.cjs",
+    "myCustom.d.ts",
+    "env.d.ts",
+    "config.d.ts"
+ ],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}

@@ -2,19 +2,19 @@
  * @Author: sunguohui
  * @Date: 2024-01-06 17:10:54
  * @LastEditors: sunguohui
- * @LastEditTime: 2024-01-10 13:26:42
+ * @LastEditTime: 2024-01-11 11:12:01
  * @FilePath: \vue3ye\vite.config.ts
  * @Description:
  */
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
+
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
 import { serveProxy } from './scripts/serveConfig';
 import { getEnterPages, npmConfigPage } from './scripts/pagesConfig';
-import compression from 'vite-plugin-compression'; // gzip/br 压缩
+
 
 
 const getFileURLToPath = (url: string): string => {
@@ -37,6 +37,17 @@ export default defineConfig({
 
   plugins: [
     vue(),
+    Components({
+      // 配置需要默认导入的自定义组件文件夹，该文件夹下的所有组件都会自动 import
+      dirs: [
+        getFileURLToPath('./src/components')
+      ],
+      deep: true,
+      dts: getFileURLToPath('./components.d.ts'),
+      resolvers: [
+        VantResolver()
+      ]
+    }),
   ],
 
   resolve: {
@@ -89,7 +100,6 @@ export default defineConfig({
     // https: true,
     // 使用IP能访问
     host: true,
-    port: 8082,
     // 热更新
     // hmr: true,
     // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口

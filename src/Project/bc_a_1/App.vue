@@ -2,13 +2,16 @@
  * @Author: sunguohui
  * @Date: 2024-01-09 21:44:42
  * @LastEditors: sunguohui
- * @LastEditTime: 2024-01-09 21:56:43
- * @FilePath: \vue3ye\src\Project\bc_pcbc_1\App.vue
+ * @LastEditTime: 2024-01-11 12:42:40
+ * @FilePath: \vue3ye\src\Project\bc_a_1\App.vue
  * @Description:
 -->
 <script setup lang="ts">
+import 'vant/es/toast/style';
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
+import { test} from '@/utils/test'
+test();
 </script>
 
 <template>
@@ -16,9 +19,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <img src="/1.png" alt="App.vue 组件中可以正常显示" />
       <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>

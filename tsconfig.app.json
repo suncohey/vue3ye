@@ -1,5 +1,48 @@
+
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "lib": [
+      // Target ES2020 to align with Vite.
+      // <https://vitejs.dev/config/build-options.html#build-target>
+      // Support for newer versions of language built-ins are
+      // left for the users to include, because that would require:
+      //   - either the project doesn't need to support older versions of browsers;
+      //   - or the project has properly included the necessary polyfills.
+      "ES2020",
+
+      "DOM",
+      "DOM.Iterable"
+
+      // No `ScriptHost` because Vue 3 dropped support for IE
+    ],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "allowJs": true,
+
+    /* Bundler mode */
+    "moduleResolution": "Node",
+    // "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true, // 检查是否存在未使用的变量
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*":["src/*"],
+      "components":["src/components/*"]
+    }
+  },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
@@ -12,16 +55,12 @@
     "vite.config.ts",
     "postcss.config.cjs",
     "myCustom.d.ts",
-    "env.d.ts",
+    "vite-env.d.ts",
     "config.d.ts"
  ],
-  "exclude": ["src/**/__tests__/*"],
-  "compilerOptions": {
-    "composite": true,
-    "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+"exclude": [
+  "dist",
+  "node_modules",
+  "src/**/__tests__/*"
+],
 }
